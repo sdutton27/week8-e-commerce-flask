@@ -1,0 +1,30 @@
+  <nav class="navbar navbar-expand-lg">
+    <a class="navbar-brand d-inline-block align-top" href="/"><img src="{{ url_for('static', filename='img/1.jpg') }}" width="30" height="30" alt=""><span>E-Commerce Site</span></a>
+    {% if current_user.is_authenticated and not current_user.is_admin %}
+      <a class="nav-link hello-user-link" href="/profile" >Hello, {{ current_user.first_name.title() }}</a>
+      <a class="nav-link active" href="/">Home <span class="sr-only">(current)</span></a>
+      <a class="nav-link" href="/products">Products</a>
+      <div class="shopping-cart">
+        <a class="nav-link nav-cart" href="/cart"><i class="fas fa-shopping-cart"></i></a>
+        {%if current_user.products%}
+        <span class="items-in-cart">{{current_user.products|length}}</span>
+        {%endif%}
+      </div>
+      <a class="nav-link" href="/logout">Log Out</a>
+    <!--Here is where we will have an if-statement for current user . is admin-->
+    {% elif current_user.is_admin %}
+      <a class="nav-link hello-user-link" href="/profile" >Hello, {{ current_user.first_name.title() }}</a>
+      <a class="nav-link" href="/products">Products</a>
+      <a class="nav-link" href="/add-product">Add Product</a>
+      <a class="nav-link" href="/logout">Log Out</a>
+    {% else %}
+      <a class="nav-link active" style="color:white;">Hello, Guest</a>
+      <a class="nav-link active" href="/">Home <span class="sr-only">(current)</span></a>
+      <a class="nav-link" href="/login">Log In</a>
+      <a class="nav-link" href="/signup">Sign Up</a>
+    {% endif %}
+  </nav>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.2/umd/popper.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.0/js/bootstrap.min.js"></script>
+

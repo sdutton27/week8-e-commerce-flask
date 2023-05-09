@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+  <div class="row justify-content-center align-items-center">
+    <div class="col-md-6 text-center">
+      <h1 class="display-4">Congratulations! {{ name }}</h1>
+      <p class="lead">Today is our opening day, and to celebrate we're giving away all of our products for free!</p>
+      <img src="{{url_for('static', filename='img/1.jpg') }}" alt="confetti" style="width: 200px; height: 200px; margin-bottom: 20px;">
+    </div>
+  </div>
+</div>
+{% endblock %}

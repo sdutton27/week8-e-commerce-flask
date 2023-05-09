@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-4 mb-3">
+      <img src="{{p.image}}" class="card-img-top" alt="..." style="height:100%;">
+    </div>
+    <div class="col-md-5 mb-3">
+      <h5 class="card-title"><b style="font-size: 1.2vw;">{{p.title}}</b></h5>
+      <p class="card-text"><b style="font-size: 1.5vw;"> ${{p.price}}</b></p>
+      <p class="card-text"><b>Rating: {{p.rating}}</b>
+      <p class="card-text"><b>About this item</b> <br>{{p.description}}</p>
+      
+    </div>
+    <div class="col-md-3 d-flex justify-content-center align-items-center">
+      <div class="d-flex flex-column ml-auto">
+        {% if current_user.is_admin %}
+        <a class="card-text btn btn-info"; href="/edit-product/{{p.id}}">Edit Product</a>
+        <a class="card-text btn btn-warning ml-auto" style = "margin-left:;" href="/remove-item/{{p.id}}">Remove from store</a>
+        {% elif p in current_user.products%}
+        <a class="card-text btn btn-warning" href="/remove-from-cart/{{p.id}}"><i class="fas fa-shopping-cart"></i> Remove from cart</a>
+        {% else %}
+        <a class="card-text btn btn-primary" href="/add-to-cart/{{ p.id }}"><i class="fas fa-shopping-cart"></i> Add to cart</a>   
+        {% endif %}
+      </div>
+    </div>
+    
+</div>
+<br> <br>
+
+{% for p in products %}
+<div class="col-md-12 mb-3">
+  <div class="card border-0" style="border-radius: 10px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);">
+    <a href="/product/{{p.id}}"> 
+      <img src="{{p.image}}" class="card-img-top" alt="...">
+    </a>
+    <div class="card-body position-relative">
+      <a class="card-title" href="/product/{{p.id}}" style="color: black">{{p.title}}</a><br>
+    </div>
+  </div>
+</div>
+{% endfor %}
+{% endblock %}

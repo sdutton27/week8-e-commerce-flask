@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container"align = "center" style="height:100%;">
+<h1 id="profile-title" align = "center">Profile</h1>
+<div id="profile-info" align = "center" >
+    <span id="name-title"><b>Name: </b></span> <span id="name">{{current_user.first_name}} {{current_user.last_name}} </span>
+    <span id="username-title"><b>Username: </b></span> <span id="username">{{current_user.username}} </span>
+    <span id="email-title"><b>Email:</b> </span> <span id="email">{{current_user.email}} </span>
+    <button type="button" onclick="window.location.href='/edit-profile'"class="btn btn-success edit-btn">Edit Profile</button>
+</div>
+</div>
+
+{% endblock %}

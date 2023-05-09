@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<style>
+
+    body {
+        background-image: url('/static/img/1.jpg');
+        background-size:100vw;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+</style>
+
+
+<div class="login-box">
+    <h1 id="login-title" align = "center" >Login</h1>
+    <form method="POST" align = "center" >
+        {{ form.hidden_tag() }}
+
+        <div class="form-group">
+            {{ form.username(class='form-control', style="text-align:left;", placeholder='Username or phone number') }}
+        </div>
+
+        <div class="form-group">
+            {{ form.password(class='form-control', placeholder='Password') }}
+        </div>
+
+        <div class="form-group">
+            {{ form.submit(class='btn btn-primary', label='Login') }}
+            <!-- <a type="submit" class="btn btn-primary" href="/">Log In</a> -->
+        </div>
+
+        <div class="form-group">
+            <a href="#" style="font-size: 14px;">Forgot Password?</a>
+        </div>
+
+        <hr style="border-top: 1px solid rgb(139, 28, 28); margin-top: 5px; margin-bottom: 5px;">
+
+        <div class="form-group">
+            <a href="/signup" class="btn btn-secondary">Create Account</a>
+        </div>
+    </form>
+</div>
+</login_signup>
+
+{% endblock %}

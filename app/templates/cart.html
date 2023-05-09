@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<cart-space>
+<div class="cart-container">
+    <h1 id="products-title" align = "center">Shopping Cart</h1>
+    {% if cart|length == 0 %}
+    <div class="d-flex justify-content-center align-items-center" style="height: 90vh;">
+        <div class="text-center">
+            <h6>You don't have any items in your cart. Let's get shopping!</h6>
+            <a class="btn btn-info" href="/products">Start Shopping</a>
+        </div>
+    </div>
+    {% else %}
+    <div class="cart-total text-right mt-3">
+        <a href="/empty-cart" class="btn btn-danger mt-3">Empty cart</a>
+    </div>
+    <br>
+    <ul class="list-group">
+        {% for item in cart %}
+        <li class="list-group-item">
+            <div class="row align-items-center">
+                <div class="col-md-1">
+                    <img src="{{item.image}}" class="img-fluid cart-item-image">
+                </div>
+                <div class="col-md-7">
+                    <h5>{{item.title}}</h5>
+                </div>
+                <div class="col-md-2 text-center">
+                    <p><b>${{item.price}}</b></p>
+                </div>
+                <div class="col-md-2 text-right">
+                    <a href="/remove-from-cart/{{item.id}}" class="btn btn-danger">Remove</a>
+                </div>
+            </div>
+        </li>
+        {% endfor %}
+    </ul>
+    <br>
+    <div class="cart-total text-right mt-3">
+        <p style="margin-right: 22.8vw;"><b>Total:${{ total }}</b></p>
+        <br> 
+        <a style="margin-right: 22vw;" href="/checkout" class="btn btn-warning mt-3">Checkout</a>
+    </div>
+    {% endif %}
+</div>
+</cart-space>
+{% endblock %}

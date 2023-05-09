@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+  <h1 id="products-title" align = "center" style="margin-bottom: 10px;">List of Products</h1>
+  <div class="dropdown">
+    <a class="btn btn-secondary dropdown-toggle"  href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+      View By Department
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+      <li><a class="dropdown-item" href="/products">All Departments</a></li>
+      {% for dept in departments_list%}
+      <li><a class="dropdown-item" href="/products/{{dept}}">{{dept}}</a></li>
+      {% endfor %}
+    </ul>
+  </div>
+  <br>    
+  <div class="row justify-content-center align-items-stretch">
+    {% for p in products %}
+    <div class="col-md-4 mb-3">
+      <div class="card border-0" style="border-radius: 10px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);">
+        <a href="/product/{{p.id}}"> 
+          <img src="{{p.image}}" class="card-img-top" alt="...">
+        </a>
+          <div class="card-body position-relative">
+            <a class="card-title" href="/product/{{p.id}}" style="color: black">{{p.title}}</a><br>
+          </div>
+            <a class="card-text1 text-center" href="/product/{{p.id}}">${{p.price}}</a>
+            <p class="card-text1 text-center">Rating:{{p.rating}}</p>
+
+          <p class="card-text text-center"><small class="text-muted">Delivery by tomorrow evening!{{tomorrow_date}}</small></p>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}
+
+

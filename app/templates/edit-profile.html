@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1 id="edit-profile-title" align = "center">Edit Profile</h1>
+<div align="center">
+<form class="edit-profile-form" method="POST" align ="center">
+    {{ form.hidden_tag() }}
+    <span id="edit-first-name-title"><b>First Name: </b></span>
+    {{ form.first_name(id='edit-first-name',class='form-control', placeholder='First Name', value=current_user.first_name) }}
+    <span id="edit-last-name-title"><b>Last Name: </b></span>
+    {{ form.last_name(id='edit-last-name',class='form-control', placeholder='Last Name', value=current_user.last_name) }}
+    <span id="edit-username-title"><b>Username: </b></span>
+    {{ form.username(id='edit-username',class='form-control', placeholder='Username', value=current_user.username) }}
+    <span id="edit-email-title"><b>Email: </b></span>
+    {{ form.email(id='edit-email',class='form-control', placeholder='Email', value=current_user.email) }}
+    <span id="edit-password-title"><b>Password: </b></span>
+    {{ form.password(id='edit-password',class='form-control', placeholder='Password') }}
+    <span id="edit-confirm-password-title"><b>Confirm Password: </b></span>
+    {{ form.confirm_password(id='edit-confirm-password', class='form-control', placeholder='Confirm Password') }}
+    <button type="button" onclick="window.location.href='/profile'"class="btn btn-primary edit-submit-btn2">Go Back</button>
+    {{ form.submit(class='btn btn-primary edit-submit-btn1') }}
+</form>
+</div>
+
+{% endblock %}

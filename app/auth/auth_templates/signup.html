@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<style>
+
+    body {
+        background-image: url('/static/img/1.jpg');
+        background-size:100vw;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+    </style>
+
+
+<div class="signup-box">
+    <h1 id="sign-up-title" align = "center" >Sign up</h1>
+    <form method="POST" align="center">
+        {{ form.hidden_tag() }}
+
+        <div class="form-group">
+            {{ form.first_name(class='form-control', placeholder='First Name') }}
+        </div>
+        
+        <div class="form-group">
+            {{ form.last_name(class='form-control', placeholder='Last Name') }}
+        </div>
+
+        <div class="form-group">
+        {{ form.username(class='form-control', style="text-align:left;", placeholder='Username') }}
+        </div>
+
+        <div class="form-group">
+            {{ form.email(class='form-control', style="text-align:left;", placeholder='Email or phone number') }}
+        </div>
+
+        <div class="form-group">
+            {{ form.password(class='form-control', placeholder='Password') }}
+        </div>
+
+        <div class="form-group">
+            {{ form.confirm_password(class='form-control', placeholder='Confirm Password') }}
+        </div>
+
+        <p class="terms-text">By clicking Sign Up, you agree to our Terms, Privacy Policy and Cookies Policy. You may receive SMS Notifications from us and can opt out any time.</p>
+        
+
+        <div class="form-group">
+            {{ form.submit(class='btn btn-primary') }}
+
+            <!-- <a type="submit" class="btn btn-primary" href="/login">Sign up</a>  -->
+            <!-- we need to change the redirect link -->
+        </div>
+    </form>
+</div>
+
+{% endblock %}

@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1 id="add-product" align = "center">Add Product</h1>
+<form id="add-product-form" method="POST" align = "center">
+    {{ form.hidden_tag() }}
+    {{ form.ASIN(class='form-control', placeholder='ASIN') }}
+    {{ form.submit(class='btn btn-primary') }}
+</form>
+<div id="accordion">
+    <div class="card">
+      <div class="card-header" id="headingOne">
+        <h5 class="mb-0">
+          <button class="btn btn-link asin-btn" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+            What is an ASIN?
+          </button>
+        </h5>
+      </div>
+  
+      <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+        <div class="card-body">
+            "ASIN" stands for Amazon Standard Identification Number. This is a 10 digit alpha-numeric code that Amazon utilizes to organize their internal inventory structure. You can find the ASIN for any product on Amazon by scrolling down on a listing to find the Product details/information.
+        </div>
+      </div>
+    </div>
+</div>
+
+{% endblock %}
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>

@@ -1,0 +1,7 @@
+ecommerce_venv
+__pycache__
+migrations
+color-pallette.txt
+who's-doing-what.txt
+ideas.txt
+.env
